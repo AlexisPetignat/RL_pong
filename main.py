@@ -37,14 +37,14 @@ model = DQN(num_actions=n_actions)
 # You can edit these hyperparameters!
 agent = QLearningAgent(
     learning_rate=0.00025,
-    epsilon=1.0,
+    epsilon=0.05,
     decay=30000,
     epsilon_min=0.05,
     gamma=0.99,
     legal_actions=list(range(n_actions)),
     model=model,
     batch_size=128,
-    retrain=True,
+    retrain=False,
 )
 
 
@@ -95,7 +95,7 @@ def play_and_train(
 
 M = 90000
 for i in range(M):
-    if i % 1000 == 999:
+    if i % 1000 == -1 or True:
         env1 = HumanRendering(env)
     else:
         env1 = env
